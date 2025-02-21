@@ -34,7 +34,7 @@
         </tr>
         <tr>
             <td>Sparkling Nuclear Megolodon</td>
-            <td><img src="Sparkling Nuclear A Megolodon.jpg" alt="Sparkling Nuclear Megolodon" width="100"></td>
+            <td><img src="![Sparkling Nuclear A Megolodon](https://github.com/user-attachments/assets/ec19a750-7d00-445c-a700-c02457b7a353)" alt="Sparkling Nuclear Megolodon" width="100"></td>
             <td>3$</td>
             <td><a href="comanda.html">Buy</a></td>
         </tr>
