@@ -36,7 +36,7 @@
             <td>Sparkling Nuclear Megolodon</td>
             <td><img src="Sparkling Nuclear A Megolodon.jpg" alt="Sparkling Nuclear Megolodon" width="100"></td>
             <td>3$</td>
-            <td><a href="comanda.html">Buy</a></td>
+            <td><a href="[comanda.html](https://playerok.com/products/ef60d6e377ba-sparkling-nuclearancient-megalodon)">Buy</a></td>
         </tr>
                 <tr>
             <td>SSG Nessie</td>
