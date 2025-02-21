@@ -45,12 +45,5 @@
             <td><a href="https://playerok.com/products/71970235fd03-exlusive-shiny-sparkling-giant-nessi-8000kgih-bolshe-ne-slovit">Buy</a></td>
         </tr>
     </table>
-
-    <h2>Hartă Magazin</h2>
-    <img src="harta.png" usemap="#shopmap" alt="Harta Magazin">
-    <map name="shopmap">
-        <area shape="rect" coords="10,10,100,100" href="undiță.html" alt="Undiță">
-        <area shape="rect" coords="120,10,220,100" href="barcă.html" alt="Barcă">
-    </map>
 </body>
 </html>
