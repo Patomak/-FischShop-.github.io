@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <h1>Magazin de Iteme - Fisch</h1>
+    <h1>Item shop - Fisch</h1>
     <table>
         <tr>
             <th>Item</th>
