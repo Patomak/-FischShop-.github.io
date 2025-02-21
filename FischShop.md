@@ -30,7 +30,7 @@
             <td>SSB Pickle</td>
             <td><img src="SSB Pickle.jpg" alt="SSB Pickle" width="100"></td>
             <td>1.5$</td>
-            <td><a href="comanda.html">Buy</a></td>
+            <td><a href="[comanda.html]https://playerok.com/products/730ce9be6bc7-shiny-sparklingbig-sea-pickle-rick">Buy</a></td>
         </tr>
         <tr>
             <td>Sparkling Nuclear Megolodon</td>
