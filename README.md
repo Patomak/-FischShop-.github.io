@@ -18,25 +18,31 @@
     </style>
 </head>
 <body>
-    <h1>Magazin de Iteme - Fishing Roblox</h1>
+    <h1>Magazin de Iteme - Fisch</h1>
     <table>
         <tr>
             <th>Item</th>
             <th>Imagine</th>
-            <th>Preț (Robux)</th>
-            <th>Comandă</th>
+            <th>Price (USD)</th>
+            <th>Buy</th>
         </tr>
         <tr>
-            <td>Undiță Epică</td>
-            <td><img src="undita.png" alt="Undiță Epică" width="100"></td>
-            <td>500</td>
-            <td><a href="comanda.html">Cumpără</a></td>
+            <td>SSB Pickle</td>
+            <td><img src="SSB Pickle.jpg" alt="SSB Pickle" width="100"></td>
+            <td>1.5$</td>
+            <td><a href="comanda.html">Buy</a></td>
         </tr>
         <tr>
-            <td>Barcă Rapidă</td>
-            <td><img src="barca.png" alt="Barcă Rapidă" width="100"></td>
-            <td>1200</td>
-            <td><a href="comanda.html">Cumpără</a></td>
+            <td>Sparkling Nuclear Megolodon</td>
+            <td><img src="Sparkling Nuclear A Megolodon.jpg" alt="Sparkling Nuclear Megolodon" width="100"></td>
+            <td>3$</td>
+            <td><a href="comanda.html">Buy</a></td>
+        </tr>
+                <tr>
+            <td>SSG Nessie</td>
+            <td><img src="ssg nessie.png" alt="SSG Nessie" width="100"></td>
+            <td>5$</td>
+            <td><a href="comanda.html">Buy</a></td>
         </tr>
     </table>
 
