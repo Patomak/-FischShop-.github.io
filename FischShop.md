@@ -30,7 +30,7 @@
             <td>SSB Pickle</td>
             <td><img src="SSB Pickle.jpg" alt="SSB Pickle" width="100"></td>
             <td>1.5$</td>
-            <td><a href="[comanda.html]https://playerok.com/products/730ce9be6bc7-shiny-sparklingbig-sea-pickle-rick">Buy</a></td>
+            <td><a href="https://playerok.com/products/730ce9be6bc7-shiny-sparklingbig-sea-pickle-rick">Buy</a></td>
         </tr>
         <tr>
             <td>Sparkling Nuclear Megolodon</td>
@@ -42,7 +42,7 @@
             <td>SSG Nessie</td>
             <td><img src="ssg nessie.png" alt="SSG Nessie" width="100"></td>
             <td>5$</td>
-            <td><a href="comanda.html">Buy</a></td>
+            <td><a href="https://playerok.com/products/71970235fd03-exlusive-shiny-sparkling-giant-nessi-8000kgih-bolshe-ne-slovit">Buy</a></td>
         </tr>
     </table>
 
