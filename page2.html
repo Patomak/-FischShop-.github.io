@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Shop - Page 2</title>
+    <style>
+        body {
+            text-align: center;
+            background: linear-gradient(135deg, #a313d3, #cc8711);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .items-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 800px;
+        }
+        .item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 200px;
+            text-align: center;
+            position: relative;
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .info-box {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+            width: 250px;
+        }
+        .info-box.left {
+            left: 20px;
+        }
+        .info-box.right {
+            right: 20px;
+        }
+        .button {
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            background: white;
+            border: 1px solid black;
+            border-radius: 5px;
+            transition: 0.3s;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #66a6ff;
+            color: white;
+        }
+        .pagination {
+            margin-top: 20px;
+        }
+        .pagination a {
+            margin: 5px;
+            padding: 10px 15px;
+            text-decoration: none;
+            border: 1px solid black;
+            background: white;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .pagination a:hover {
+            background: #66a6ff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="mainpage.html" class="button">Main</a>
+    </div>
+    
+    <h1>Item Shop - Fisch</h1>
+    <div class="items-container">
+        <div class="item" onmouseover="showInfo('info1')" onmouseout="hideInfo('info1')">
+            <h2>SSG Nessie</h2>
+            <img src="ssg nessie.png" alt="ssg nessie">
+            <p>Price: $7.5</p>
+            <a href="https://playerok.com/products/71970235fd03-exlusive-shiny-sparkling-giant-nessi-8000kgih-bolshe-ne-slovit" class="button">Buy</a>
+        </div> 
+        <div class="item" onmouseover="showInfo('info2')" onmouseout="hideInfo('info2')">
+            <h2>SSBS Nessie</h2>
+            <img src="ssbs Nessie.png" alt="ssbs nessie">
+            <p>Price: $3</p>
+            <a href="https://playerok.com/products/06dde212758f-sparkling-shiny-sinister-big-nessieodna-iz-samyh-cennyh-ryb-v-igre" class="button">Buy</a>
+        </div>
+    </div>
+    
+    <div id="info1" class="info-box left">
+        <h3>SSG Nessie</h3>
+        <p>Exclusive shiny sparkling giant Nessie weighing 8000 kg!</p>
+    </div>
+    <div id="info2" class="info-box right">
+        <h3>SSBS Nessie</h3>
+        <p>Sparkling shiny sinister big Nessie - one of the rarest fish in the game!</p>
+    </div>
+
+    <div class="pagination">
+        <a href="page2.html">1</a>
+        <a href="page3.html">2</a>
+        <a href="page4.html">3</a>
+        <a href="page5.html">4</a>
+    </div>
+
+    <script>
+        function showInfo(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+        function hideInfo(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+    </script>
+</body>
+</html>
