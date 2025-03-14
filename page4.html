@@ -23,6 +23,7 @@
             flex-wrap: wrap;
             gap: 20px;
             max-width: 800px;
+            position: relative;
         }
         .item {
             background: white;
@@ -31,6 +32,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             width: 200px;
             text-align: center;
+            position: relative;
         }
         img {
             width: 150px;
@@ -69,27 +71,54 @@
             background: #66a6ff;
             color: white;
         }
+        .item-info {
+            display: none;
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 250px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        .item:hover .item-info {
+            display: block;
+        }
+        .item:nth-child(1):hover .item-info {
+            left: 20px;
+        }
+        .item:nth-child(2):hover .item-info {
+            right: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <a href="mainpage.html" class="main-button">Main</a>
     </div>
-</body>
-<body>
     <h1>Item Shop - Fisch</h1>
     <div class="items-container">
         <div class="item">
             <h2>SSGM Phantom Meg</h2>
             <img src="SSGM Phantom Meg.png" alt="ssgm phmeg">
             <p>Price: $8.5</p>
-            <a href="https://playerok.com/products/fa3366286512-sparkling-shiny-giant-mythical-phantom-megalodon135000kg">Buy</a>
+            <a href="https://playerok.com/products/fa3366286512-sparkling-shiny-giant-mythical-phantom-megalodon135000kg" class="button">Buy</a>
+            <div class="item-info">
+                <h3>SSGM Phantom Meg</h3>
+                <p>A mythical phantom megalodon with sparkling scales, highly prized by expert fishers.</p>
+            </div>
         </div> 
         <div class="item">
             <h2>SSM Sea Mine</h2>
             <img src="SSM Sea Mine.png" alt="SSM Sea Mine">
             <p>Price: $3</p>
-            <a href="https://playerok.com/products/31b71a9bd54a-shiny-sparklingmythical-sea-mine">Buy</a>
+            <a href="https://playerok.com/products/31b71a9bd54a-shiny-sparklingmythical-sea-mine" class="button">Buy</a>
+            <div class="item-info">
+                <h3>SSM Sea Mine</h3>
+                <p>A rare, sparkling sea mine, known for its explosive charm and stunning look.</p>
+            </div>
         </div>
     </div>
     <div class="pagination">
