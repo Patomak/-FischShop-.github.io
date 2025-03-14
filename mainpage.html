@@ -5,19 +5,170 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="mystyle.css">
     <title>Item Shop - Fisch</title>
-  
+    <style>
+        body {
+            text-align: center;
+            background: url('fisch1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+        }
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .main-button, .explore-button {
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            background: white;
+            border: 1px solid black;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .main-button:hover, .explore-button:hover {
+            background: #66a6ff;
+            color: white;
+        }
+        .welcome-message {
+            margin-top: 80px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+        }
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .carousel {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            text-align: center;
+        }
+        .carousel-item {
+            display: none;
+            border: 4px solid transparent;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #ff9a9e, #781d04, #a50578, #072a66, #12bc3a);
+            background-size: 300% 300%;
+            animation: borderAnimation 5s infinite alternate;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .carousel-item.active {
+            display: block;
+        }
+        .carousel-item img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .carousel-item h3 {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        @keyframes borderAnimation {
+            0% {
+                border-color: #ff9a9e;
+            }
+            25% {
+                border-color: #fad0c4;
+            }
+            50% {
+                border-color: #fbc2eb;
+            }
+            75% {
+                border-color: #a6c1ee;
+            }
+            100% {
+                border-color: #84fab0;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="header">
         <a href="mainpage.html" class="main-button">Main</a>
     </div>
     <div class="welcome-message">
-        <h1>Welcome to Fisch item Shop</h1>
+        <h1>Welcome to Fisch Item Shop</h1>
         <p>Best and rarest fish you can find.</p>
         <a href="page2.html" class="explore-button">Explorează</a>
     </div>
+
+    <div class="carousel">
+        <div class="carousel-item active">
+            <img src="ssg nessie.png" alt="SSG Nessie">
+            <h3>SSG Nessie</h3>
+        </div>
+        <div class="carousel-item">
+            <img src="ssbs Nessie.png" alt="SSBS Nessie">
+            <h3>SSBS Nessie</h3>
+        </div>
+        <div class="carousel-item">
+            <img src="SSG Ancient Orca.png" alt="SSG Ancient Orca">
+            <h3>SSG Ancient Orca</h3>
+        </div>
+        <div class="carousel-item">
+            <img src="SSG Kraken.png" alt="SSG Kraken">
+            <h3>SSG Kraken</h3>
+        </div>
+    </div>
+
     <div class="footer">
         <p>&copy; 2025 Item Shop - Fisch. Toate drepturile rezervate.</p>
     </div>
+
+    <script>
+        const products = [
+            { name: "SSG Nessie", image: "ssg nessie.png" },
+            { name: "SSBS Nessie", image: "ssbs Nessie.png" },
+            { name: "SSG Ancient Orca", image: "SSG Ancient Orca.png" },
+            { name: "SSG Kraken", image: "SSG Kraken.png" }
+        ];
+
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            carouselItems.forEach(item => item.classList.remove('active'));
+
+            carouselItems[currentIndex].classList.add('active');
+
+            currentIndex = (currentIndex + 1) % products.length;
+        }
+
+        setInterval(updateCarousel, 9000);
+
+        updateCarousel();
+    </script>
 </body>
 </html>
