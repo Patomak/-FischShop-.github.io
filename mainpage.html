@@ -64,11 +64,17 @@
             border-radius: 5px;
         }
 
-        .carousel {
+        /* Стили для каруселей */
+        .carousel-container {
             position: fixed;
             right: 20px;
             top: 50%;
             transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Отступ между каруселями */
+        }
+        .carousel {
             width: 200px;
             text-align: center;
         }
@@ -124,22 +130,46 @@
         <a href="page2.html" class="explore-button">Explorează</a>
     </div>
 
-    <div class="carousel">
-        <div class="carousel-item active">
-            <img src="ssg nessie.png" alt="SSG Nessie">
-            <h3>SSG Nessie</h3>
+    <!-- Контейнер для каруселей -->
+    <div class="carousel-container">
+        <!-- Первая карусель -->
+        <div class="carousel">
+            <div class="carousel-item active">
+                <img src="ssg nessie.png" alt="SSG Nessie">
+                <h3>SSG Nessie</h3>
+            </div>
+            <div class="carousel-item">
+                <img src="ssbs Nessie.png" alt="SSBS Nessie">
+                <h3>SSBS Nessie</h3>
+            </div>
+            <div class="carousel-item">
+                <img src="SSG Ancient Orca.png" alt="SSG Ancient Orca">
+                <h3>SSG Ancient Orca</h3>
+            </div>
+            <div class="carousel-item">
+                <img src="SSG Kraken.png" alt="SSG Kraken">
+                <h3>SSG Kraken</h3>
+            </div>
         </div>
-        <div class="carousel-item">
-            <img src="ssbs Nessie.png" alt="SSBS Nessie">
-            <h3>SSBS Nessie</h3>
-        </div>
-        <div class="carousel-item">
-            <img src="SSG Ancient Orca.png" alt="SSG Ancient Orca">
-            <h3>SSG Ancient Orca</h3>
-        </div>
-        <div class="carousel-item">
-            <img src="SSG Kraken.png" alt="SSG Kraken">
-            <h3>SSG Kraken</h3>
+
+        <!-- Вторая карусель -->
+        <div class="carousel">
+            <div class="carousel-item active">
+                <img src="SSB Pickle.jpg" alt="SSB Pickle">
+                <h3>SSB Pickle</h3>
+            </div>
+            <div class="carousel-item">
+                <img src="SSGM Phantom Meg.png" alt="SSGM Phantom Meg">
+                <h3>SSGM Phantom Meg</h3>
+            </div>
+            <div class="carousel-item">
+                <img src="Sparkling Nuclear A Megolodon.jpg" alt="Nuclear Megalodon">
+                <h3>Nuclear Megalodon</h3>
+            </div>
+            <div class="carousel-item">
+                <img src="SSM Sea Mine.png" alt="SSM Sea Mine">
+                <h3>SSM Sea Mine</h3>
+            </div>
         </div>
     </div>
 
@@ -148,27 +178,36 @@
     </div>
 
     <script>
-        const products = [
+        const products1 = [
             { name: "SSG Nessie", image: "ssg nessie.png" },
             { name: "SSBS Nessie", image: "ssbs Nessie.png" },
             { name: "SSG Ancient Orca", image: "SSG Ancient Orca.png" },
             { name: "SSG Kraken", image: "SSG Kraken.png" }
         ];
 
-        const carouselItems = document.querySelectorAll('.carousel-item');
-        let currentIndex = 0;
+        const products2 = [
+            { name: "SSB Pickle", image: "SSB Pickle.jpg" },
+            { name: "SSGM Phantom Meg", image: "SSGM Phantom Meg.png" },
+            { name: "Nuclear Megalodon", image: "Sparkling Nuclear A Megalodon.jpg" },
+            { name: "SSM Sea Mine", image: "SSM Sea Mine.png" }
+        ];
 
-        function updateCarousel() {
-            carouselItems.forEach(item => item.classList.remove('active'));
+        function setupCarousel(carouselSelector, products) {
+            const carouselItems = document.querySelectorAll(`${carouselSelector} .carousel-item`);
+            let currentIndex = 0;
 
-            carouselItems[currentIndex].classList.add('active');
+            function updateCarousel() {
+                carouselItems.forEach(item => item.classList.remove('active'));
+                carouselItems[currentIndex].classList.add('active');
+                currentIndex = (currentIndex + 1) % products.length;
+            }
 
-            currentIndex = (currentIndex + 1) % products.length;
+            setInterval(updateCarousel, 4000);
+            updateCarousel();
         }
 
-        setInterval(updateCarousel, 9000);
-
-        updateCarousel();
+        setupCarousel('.carousel-container .carousel:nth-child(1)', products1);
+        setupCarousel('.carousel-container .carousel:nth-child(2)', products2);
     </script>
 </body>
 </html>
