@@ -1,3 +1,9 @@
+<?php
+$items = [
+    ["src" => "images/SSGM Phantom Meg.png", "alt" => "SSGM Phantom Meg", "name" => "SSGM Phantom Meg", "price" => "$8.5", "link" => "https://playerok.com/products/fa3366286512-sparkling-shiny-giant-mythical-phantom-megalodon135000kg", "description" => "A mythical phantom megalodon with sparkling scales, highly prized by expert fishers."],
+    ["src" => "images/SSM Sea Mine.png", "alt" => "SSM Sea Mine", "name" => "SSM Sea Mine", "price" => "$3", "link" => "https://playerok.com/products/31b71a9bd54a-shiny-sparklingmythical-sea-mine", "description" => "A rare, sparkling sea mine, known for its explosive charm and stunning look."],
+];
+?>
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -29,7 +35,7 @@
             top: 0;
             left: 0;
         }
-        .main-button, .explore-button, .button {
+        .main-button, .button {
             text-decoration: none;
             font-weight: bold;
             padding: 10px 15px;
@@ -39,7 +45,7 @@
             transition: 0.3s;
             color: black;
         }
-        .main-button:hover, .explore-button:hover, .button:hover {
+        .main-button:hover, .button:hover {
             background: #66a6ff;
             color: white;
         }
@@ -49,7 +55,6 @@
             flex-wrap: wrap;
             gap: 20px;
             max-width: 800px;
-            position: relative;
         }
         .item {
             background: white;
@@ -68,8 +73,9 @@
         }
         .pagination {
             margin-top: 20px;
-            position: absolute;
-            bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
         }
         .pagination a {
             margin: 5px;
@@ -110,36 +116,28 @@
 </head>
 <body>
     <div class="header">
-        <a href="mainpage.html" class="main-button">Main</a>
+        <a href="mainpage.php" class="main-button">Main</a>
     </div>
     <h1>Item Shop - Fisch</h1>
     <div class="items-container">
-        <div class="item">
-            <h2>SSGM Phantom Meg</h2>
-            <img src="images/SSGM Phantom Meg.png" alt="ssgm phmeg">
-            <p>Price: $8.5</p>
-            <a href="https://playerok.com/products/fa3366286512-sparkling-shiny-giant-mythical-phantom-megalodon135000kg" class="button">Buy</a>
-            <div class="item-info">
-                <h3>SSGM Phantom Meg</h3>
-                <p>A mythical phantom megalodon with sparkling scales, highly prized by expert fishers.</p>
+        <?php foreach ($items as $index => $item): ?>
+            <div class="item">
+                <h2><?= $item['name'] ?></h2>
+                <img src="<?= $item['src'] ?>" alt="<?= $item['alt'] ?>">
+                <p>Price: <?= $item['price'] ?></p>
+                <a href="<?= $item['link'] ?>" class="button">Buy</a>
+                <div class="item-info">
+                    <h3><?= $item['name'] ?></h3>
+                    <p><?= $item['description'] ?></p>
+                </div>
             </div>
-        </div> 
-        <div class="item">
-            <h2>SSM Sea Mine</h2>
-            <img src="images/SSM Sea Mine.png" alt="SSM Sea Mine">
-            <p>Price: $3</p>
-            <a href="https://playerok.com/products/31b71a9bd54a-shiny-sparklingmythical-sea-mine" class="button">Buy</a>
-            <div class="item-info">
-                <h3>SSM Sea Mine</h3>
-                <p>A rare, sparkling sea mine, known for its explosive charm and stunning look.</p>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
     <div class="pagination">
-        <a href="page2.html">1</a>
-        <a href="page3.html">2</a>
-        <a href="page4.html">3</a>
-        <a href="page5.html">4</a>
+        <a href="page2.php">1</a>
+        <a href="page3.php">2</a>
+        <a href="page4.php">3</a>
+        <a href="page5.php">4</a>
     </div>
 </body>
 </html>

@@ -1,13 +1,20 @@
+<?php
+$items = [
+    ["src" => "images/SSB Pickle.jpg", "alt" => "SSB Pickle", "name" => "SSB Pickle", "price" => "$1.5", "link" => "https://playerok.com/products/730ce9be6bc7-shiny-sparklingbig-sea-pickle-rick", "description" => "Shiny sparkling sea pickle - rare and valuable!"],
+    ["src" => "images/Sparkling Nuclear A Megolodon.jpg", "alt" => "Sparkling Nuclear Megolodon", "name" => "Sparkling Nuclear Megolodon", "price" => "$3", "link" => "https://playerok.com/products/ef60d6e377ba-sparkling-nuclearancient-megalodon", "description" => "Powerful nuclear ancient Megalodon, highly sought after!"]
+];
+?>
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item Shop - Page 3</title>
+    <title>Item Shop - Fisch</title>
     <style>
         body {
             text-align: center;
-            background: linear-gradient(135deg, #16a736, #012d6a);
+            background: linear-gradient(135deg, #89f7fe, #c254d3);
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -84,6 +91,9 @@
         }
         .pagination {
             margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
         }
         .pagination a {
             margin: 5px;
@@ -103,39 +113,33 @@
 </head>
 <body>
     <div class="header">
-        <a href="mainpage.html" class="main-button">Main</a>
-    </div>
-    
-    <h1>Item Shop - Fisch</h1>
-    <div class="items-container">
-        <div class="item" onmouseover="showInfo('info1')" onmouseout="hideInfo('info1')">
-            <h2>SSG Ancient Orca</h2>
-            <img src="images/SSG Ancient Orca.png" alt="SSG Ancient Orca">
-            <p>Price: $5.5</p>
-            <a href="https://playerok.com/products/4b877ba84db4-shiny-sparkling-giant-darkened-ancient-orca-cekretnaya-orka" class="button">Buy</a>
-        </div> 
-        <div class="item" onmouseover="showInfo('info2')" onmouseout="hideInfo('info2')">
-            <h2>SSG Kraken</h2>
-            <img src="images/SSG Kraken.png" alt="SSG Kraken">
-            <p>Price: $6</p>
-            <a href="https://playerok.com/products/94dd162a0960-novoe-shiny-sparkling-giant-kraken" class="button">Buy</a>
-        </div>
-    </div>
-    
-    <div id="info1" class="info-box left">
-        <h3>SSG Ancient Orca</h3>
-        <p>This is a rare and ancient orca with a shiny and sparkling appearance. It is a highly sought-after item among collectors.</p>
-    </div>
-    <div id="info2" class="info-box right">
-        <h3>SSG Kraken</h3>
-        <p>The SSG Kraken is a giant, shiny, and sparkling creature that is known for its majestic appearance and rarity.</p>
+        <a href="mainpage.php" class="main-button">Main</a>
     </div>
 
+    <h1>Item Shop - Fisch</h1>
+    <div class="items-container">
+        <?php foreach ($items as $index => $item): ?>
+            <div class="item" onmouseover="showInfo('info<?= $index ?>')" onmouseout="hideInfo('info<?= $index ?>')">
+                <h2><?= $item['name'] ?></h2>
+                <img src="<?= $item['src'] ?>" alt="<?= $item['alt'] ?>">
+                <p>Price: <?= $item['price'] ?></p>
+                <a href="<?= $item['link'] ?>" class="button">Buy</a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+    <?php foreach ($items as $index => $item): ?>
+        <div id="info<?= $index ?>" class="info-box <?= $index % 2 == 0 ? 'left' : 'right' ?>">
+            <h3><?= $item['name'] ?></h3>
+            <p><?= $item['description'] ?></p>
+        </div>
+    <?php endforeach; ?>
+
     <div class="pagination">
-        <a href="page2.html">1</a>
-        <a href="page3.html">2</a>
-        <a href="page4.html">3</a>
-        <a href="page5.html">4</a>
+        <a href="page2.php">1</a>
+        <a href="page3.php">2</a>
+        <a href="page4.php">3</a>
+        <a href="page5.php">4</a>
     </div>
 
     <script>

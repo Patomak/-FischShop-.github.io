@@ -1,3 +1,15 @@
+<?php
+$items = [
+    ["src" => "images/ssg nessie.png", "alt" => "SSG Nessie", "name" => "SSG Nessie"],
+    ["src" => "images/ssbs Nessie.png", "alt" => "SSBS Nessie", "name" => "SSBS Nessie"],
+    ["src" => "images/SSG Ancient Orca.png", "alt" => "SSG Ancient Orca", "name" => "SSG Ancient Orca"],
+    ["src" => "images/SSG Kraken.png", "alt" => "SSG Kraken", "name" => "SSG Kraken"],
+    ["src" => "images/SSB Pickle.jpg", "alt" => "SSB Pickle", "name" => "SSB Pickle"],
+    ["src" => "images/SSGM Phantom Meg.png", "alt" => "SSGM Phantom Meg", "name" => "SSGM Phantom Meg"],
+    ["src" => "images/Sparkling Nuclear A Megolodon.jpg", "alt" => "Nuclear Megalodon", "name" => "Nuclear Megalodon"],
+    ["src" => "images/SSM Sea Mine.png", "alt" => "SSM Sea Mine", "name" => "SSM Sea Mine"]
+];
+?>
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -63,7 +75,6 @@
             padding: 10px;
             border-radius: 5px;
         }
-
         .carousel-container {
             position: fixed;
             right: 20px;
@@ -74,105 +85,77 @@
             gap: 20px;
         }
         .carousel {
-            width: 200px;
-            text-align: center;
+            width: 220px;
+            overflow: hidden;
+            position: relative;
+            background: rgba(122, 0, 0, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            padding: 10px;
         }
         .carousel-item {
             display: none;
-            border: 4px solid transparent;
-            border-radius: 10px;
-            background: linear-gradient(45deg, #ff9a9e, #781d04, #a50578, #072a66, #12bc3a);
-            background-size: 300% 300%;
-            animation: borderAnimation 5s infinite alternate;
+            text-align: center;
             padding: 10px;
-            box-sizing: border-box;
         }
         .carousel-item.active {
             display: block;
+            animation: fadeIn 1s;
         }
         .carousel-item img {
             width: 100%;
             border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
-        .carousel-item h3 {
-            margin-top: 10px;
-            font-size: 18px;
-            color: #333;
-        }
-
-        @keyframes borderAnimation {
-            0% {
-                border-color: #ff9a9e;
-            }
-            25% {
-                border-color: #fad0c4;
-            }
-            50% {
-                border-color: #fbc2eb;
-            }
-            75% {
-                border-color: #a6c1ee;
-            }
-            100% {
-                border-color: #84fab0;
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <a href="mainpage.html" class="main-button">Main</a>
+        <a href="mainpage.php" class="main-button">Main</a>
     </div>
     <div class="welcome-message">
         <h1>Welcome to Fisch Item Shop</h1>
         <p>Best and rarest fish you can find.</p>
-        <a href="page2.html" class="explore-button">Explorează</a>
+        <a href="page2.php" class="explore-button">Explorează</a>
     </div>
-
+    
     <div class="carousel-container">
-        <div class="carousel">
-            <div class="carousel-item active">
-                <img src="images/ssg nessie.png" alt="SSG Nessie">
-                <h3>SSG Nessie</h3>
+        <?php foreach (array_chunk($items, 4) as $index => $group) : ?>
+            <div class="carousel" id="carousel-<?= $index ?>">
+                <?php foreach ($group as $key => $item) : ?>
+                    <div class="carousel-item <?= $key === 0 ? 'active' : '' ?>">
+                        <img src="<?= $item['src'] ?>" alt="<?= $item['alt'] ?>">
+                        <h3><?= $item['name'] ?></h3>
+                    </div>
+                <?php endforeach; ?>
             </div>
-            <div class="carousel-item">
-                <img src="images/ssbs Nessie.png" alt="SSBS Nessie">
-                <h3>SSBS Nessie</h3>
-            </div>
-            <div class="carousel-item">
-                <img src="images/SSG Ancient Orca.png" alt="SSG Ancient Orca">
-                <h3>SSG Ancient Orca</h3>
-            </div>
-            <div class="carousel-item">
-                <img src="images/SSG Kraken.png" alt="SSG Kraken">
-                <h3>SSG Kraken</h3>
-            </div>
-        </div>
-
-        <div class="carousel">
-            <div class="carousel-item active">
-                <img src="images/SSB Pickle.jpg" alt="SSB Pickle">
-                <h3>SSB Pickle</h3>
-            </div>
-            <div class="carousel-item">
-                <img src="images/SSGM Phantom Meg.png" alt="SSGM Phantom Meg">
-                <h3>SSGM Phantom Meg</h3>
-            </div>
-            <div class="carousel-item">
-                <img src="images/Sparkling Nuclear A Megolodon.jpg" alt="Nuclear Megalodon">
-                <h3>Nuclear Megalodon</h3>
-            </div>
-            <div class="carousel-item">
-                <img src="images/SSM Sea Mine.png" alt="SSM Sea Mine">
-                <h3>SSM Sea Mine</h3>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
-
+    
     <div class="footer">
-        <p>&copy; 2025 Item Shop - Fisch. Toate drepturile rezervate.</p>
+        <p>&copy; <?= date('Y') ?> Item Shop - Fisch. Toate drepturile rezervate.</p>
     </div>
-<script src="script.js"> </script>
- 
+    
+    <script>
+        function startCarousel(carouselId) {
+            let index = 0;
+            const items = document.querySelectorAll(`#${carouselId} .carousel-item`);
+            setInterval(() => {
+                items[index].classList.remove('active');
+                index = (index + 1) % items.length;
+                items[index].classList.add('active');
+            }, 3000);
+        }
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".carousel").forEach((carousel, idx) => {
+                startCarousel(`carousel-${idx}`);
+            });
+        });
+    </script>
 </body>
 </html>
