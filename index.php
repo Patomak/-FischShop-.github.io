@@ -44,7 +44,7 @@ $items = [
             top: 0;
             left: 0;
         }
-        .main-button, .explore-button {
+        .main-button, .explore-button, .review-button {
             text-decoration: none;
             font-weight: bold;
             padding: 10px 15px;
@@ -53,7 +53,7 @@ $items = [
             border-radius: 5px;
             transition: 0.3s;
         }
-        .main-button:hover, .explore-button:hover {
+        .main-button:hover, .explore-button:hover, .review-button:hover {
             background: #66a6ff;
             color: white;
         }
@@ -107,22 +107,23 @@ $items = [
             border-radius: 5px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .review-link-box {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <a href="mainpage.php" class="main-button">Main</a>
+        <a href="index.php" class="main-button">Main</a>
     </div>
     <div class="welcome-message">
         <h1>Welcome to Fisch Item Shop</h1>
         <p>Best and rarest fish you can find.</p>
         <a href="page2.php" class="explore-button">Explorează</a>
     </div>
-    
+
     <div class="carousel-container">
         <?php foreach (array_chunk($items, 4) as $index => $group) : ?>
             <div class="carousel" id="carousel-<?= $index ?>">
@@ -135,11 +136,15 @@ $items = [
             </div>
         <?php endforeach; ?>
     </div>
-    
+
+    <div class="review-link-box">
+        <a href="reviews.php" class="review-button">Reviews</a>
+    </div>
+
     <div class="footer">
         <p>&copy; <?= date('Y') ?> Item Shop - Fisch. Toate drepturile rezervate.</p>
     </div>
-    
+
     <script>
         function startCarousel(carouselId) {
             let index = 0;
@@ -150,7 +155,7 @@ $items = [
                 items[index].classList.add('active');
             }, 3000);
         }
-        
+
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll(".carousel").forEach((carousel, idx) => {
                 startCarousel(`carousel-${idx}`);

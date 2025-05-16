@@ -109,7 +109,7 @@ $items = [
 </head>
 <body>
     <div class="header">
-        <a href="mainpage.php" class="main-button">Main</a>
+        <a href="index.php" class="main-button">Main</a>
     </div>
     
     <h1>Item Shop - Fisch</h1>
