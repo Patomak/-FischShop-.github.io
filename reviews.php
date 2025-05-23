@@ -1,5 +1,6 @@
 <?php
-// Save reviews to file
+$isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nickname = htmlspecialchars($_POST['nickname']);
     $email = htmlspecialchars($_POST['email']);
@@ -19,6 +20,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $reviews = file_exists('reviews.json') ? json_decode(file_get_contents('reviews.json'), true) : [];
+
+if ($isAjax) {
+    foreach ($reviews as $entry) {
+        echo '<div class="review">';
+        echo '<strong>' . htmlspecialchars($entry['nickname']) . '</strong><br>';
+        echo '<div class="stars-display">' . str_repeat('★', $entry['rating']) . str_repeat('☆', 5 - $entry['rating']) . '</div>';
+        echo '<p>' . htmlspecialchars($entry['review']) . '</p>';
+        echo '</div>';
+    }
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,31 +97,24 @@ $reviews = file_exists('reviews.json') ? json_decode(file_get_contents('reviews.
         .stars-display {
             color: gold;
         }
-        .main-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            text-decoration: none;
-            font-weight: bold;
+        #mainButton {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #333;
+            color: #fff;
+            border: none;
             padding: 10px 15px;
-            background: rgba(255, 255, 255, 0.8);
-            border: 2px solid #333;
-            border-radius: 8px;
-            color: #333;
-            transition: background 0.3s, color 0.3s;
-            z-index: 999;
-        }
-        .main-button:hover {
-            background: #3399ff;
-            color: white;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <a href="index.php" class="main-button">Main</a>
+    <button id="mainButton" onclick="location.href='index.php'">Main</button>
     <div class="container">
         <h1>Leave a Review</h1>
-        <form method="POST">
+        <form id="reviewForm">
             <input type="text" name="nickname" placeholder="Nickname" required>
             <input type="email" name="email" placeholder="Email (will not be shown)" required>
             <textarea name="review" placeholder="Your review" rows="4" required></textarea>
@@ -123,18 +128,47 @@ $reviews = file_exists('reviews.json') ? json_decode(file_get_contents('reviews.
             <button type="submit">Submit Review</button>
         </form>
         <h2>Reviews</h2>
-        <?php foreach ($reviews as $entry): ?>
-            <div class="review">
-                <strong><?= htmlspecialchars($entry['nickname'] ?? 'Anonymous') ?></strong><br>
-                <div class="stars-display">
-                    <?php
-                    $rating = isset($entry['rating']) ? (int)$entry['rating'] : 0;
-                    echo str_repeat('★', $rating) . str_repeat('☆', 5 - $rating);
-                    ?>
+        <div id="reviewsContainer">
+            <?php foreach ($reviews as $entry): ?>
+                <div class="review">
+                    <strong><?= htmlspecialchars($entry['nickname']) ?></strong><br>
+                    <div class="stars-display">
+                        <?= str_repeat('★', $entry['rating']) . str_repeat('☆', 5 - $entry['rating']) ?>
+                    </div>
+                    <p><?= htmlspecialchars($entry['review']) ?></p>
                 </div>
-                <p><?= htmlspecialchars($entry['review'] ?? '') ?></p>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     </div>
+
+    <script>
+    document.getElementById("reviewForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+
+        fetch("reviews.php", {
+            method: "POST",
+            headers: { "X-Requested-With": "XMLHttpRequest" },
+            body: formData
+        })
+        .then(res => res.text())
+        .then(data => {
+            this.reset();
+            loadReviews();
+        });
+    });
+
+    function loadReviews() {
+        fetch("reviews.php", {
+            headers: { "X-Requested-With": "XMLHttpRequest" }
+        })
+        .then(res => res.text())
+        .then(html => {
+            document.getElementById("reviewsContainer").innerHTML = html;
+        });
+    }
+
+    loadReviews();
+    </script>
 </body>
 </html>
